@@ -176,20 +176,5 @@ fn main() {
 ~~~
 
 
-### 동시성 심화 학습 환경설정 : 새 크레이트 설정하고 의존성 다운로드 ?
 
-~~~
-cargo init concurrency
-~~~
-
-~~~
-cd coucurrency
-~~~
-
-~~~
-cargo add tokio --features full
-~~~
-
-~~~
-cargo run
-~~~
+0705..공유참조부터 추가 학습~
