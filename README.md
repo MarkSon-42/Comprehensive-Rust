@@ -92,11 +92,88 @@ fn main() {
 
 
 
+#### 연습문제 1 (함수) : 피보나치 재귀함수를 Rust로 구현
 
+~~~rust
+
+fn fib(n: u32) -> u32 {
+    if n <= 2 {
+        1;
+    } else {
+        fib(n - 1) + fib(n - 2)  // 이전 두 항의 합을 반환
+    }
+}
+
+fn main() {
+    let n = 20;
+    println!("fib({}) = {}", n, fib(n));
+}
+
+~~~
 
 
 ---
 
+
+#### 연습문제 2 (배열) : 중첩 배열(2차원)을 전치행렬 적용하기
+
+~~~rust
+
+fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
+    let mut result = [[0; 3]; 3];
+    for i in 0..3 {
+        for j in 0..3 {
+            result[j][i] = matrix[i][j]; 
+        }
+    }
+    result
+
+// 러스트에서 ;의 여부
+
+// 없으면 그냥 표현식임. 작업은 수행하지만 값을 반환하진 않음(와우..)
+
+// ; 있으면 rust컴파일러는 이를 명령문으로 처리
+
+// 추후 소유권 문제에 대해 관리하는데 이 개념이 사용된다.
+
+}
+
+
+        //  result[y][x] = matrix[y][x]
+    
+}
+
+fn test_transpose() {
+    let matrix = [
+        [101, 102, 103], //
+        [201, 202, 203],
+        [301, 302, 303],
+    ];
+    let transposed = transpose(matrix);
+    assert_eq!(
+        transposed,
+        [
+            [101, 201, 301], //
+            [102, 202, 302],
+            [103, 203, 303],
+        ]
+    );
+}
+
+fn main() {
+    let matrix = [
+        [101, 102, 103], // <-- 주석으로 rustfmt가 줄바꿈을 추가합니다.
+        [201, 202, 203],
+        [301, 302, 303],
+    ];
+
+    println!("행렬: {:#?}", matrix);
+    let transposed = transpose(matrix);
+    println!("전치행렬: {:#?}", transposed);
+}
+
+
+~~~
 
 
 ### 동시성 심화 학습 환경설정 : 새 크레이트 설정하고 의존성 다운로드 ?
